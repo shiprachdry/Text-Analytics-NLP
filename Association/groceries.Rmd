@@ -1,0 +1,81 @@
+---
+title: "Module 13 Network graph"
+output: pdf_document
+date: "2023-11-23"
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(igraph)
+library(arules)  # has a big ecosystem of packages built around it
+library(arulesViz)
+```
+
+```{r}
+
+
+# Association rule mining
+
+# Read in groceries lists
+
+groceries_raw <- as.matrix(read.table("C:/Users/I068117/UT_Machine Learning/groceries.txt",header = FALSE, sep = "\t"))
+
+str(groceries_raw)
+summary(groceries_raw)
+
+#  split data into a list of groceries items
+groceries = apply(groceries_raw, 1, function(row) unlist(strsplit(as.character(row), ",")))
+
+## Cast this variable as a special arules "transactions" class.
+groceries_trans = as(groceries, "transactions")
+summary(groceries_trans)
+
+```
+
+#Look at rules with support > .005 & confidence >.25 & lift (# groceries) <= 4. As there are no items with lift 5. We are only interested in items if the confidence is greater than 25% and support >.005
+```{r}
+grocrules = apriori(groceries_trans, 
+	parameter=list(support=.005, confidence=.25, maxlen=4))
+
+# Look at the output... 
+summary(grocrules)
+# sorting the output by lift
+inspect(head(sort(grocrules, by ="lift")))
+# sorting the output by confidence
+inspect(head(sort(grocrules, by ="confidence")))
+
+```
+
+
+#Interpretation: 
+1. We can say with 45% confidence that people who buy citrus fruit,other vegetable/whole milk will also buy root vegetable. There is a low support and lift is 4, which means it has the positive substitution effect between those 3 items & root vegetable and it's not because people will buy root vegetable irrespective.   
+
+2. We can say with 70% confidence that people who buy root vegetables,tropical fruit,    yogurt will also buy whole milk. There is a low support and lift is 2.7, which means it has the positive substitution effect between those 3 items & whole milk and it's not because people will buy root vegetable irrespective. 
+
+```{r}
+plot(grocrules)
+#Interpretation: we can see that high lift has low support
+
+groceries_graph = associations2igraph(subset(grocrules, lift>4), associationsAsNodes = FALSE)
+igraph::write_graph(groceries_graph, file='groceries.graphml', format = "graphml")
+```
+
+```{r figurename, echo=FALSE, fig.cap="my caption", out.width = '90%'}
+knitr::include_graphics("C:/Users/I068117/UT_Machine Learning/groceries_gephi_graph.png")
+```
+
+
+# Please see the graph in Gephi (attahed image)
+Graph Summary:
+  
+1. Maximum degree is for items : tropical fruit, Other vegetable, Yogurt, Whipped/sour cream, root vegetable -> These items are most connected to others 
+
+2. Betweeness centrality is maximum for tropical fruit, root vegetable, Yogurt -> These items should be placed commonly together as these are the most influential items in the groceries. May be this is the reason why fruits/vegetable section is closer to the dairy section
+
+3. Modularity classes: There are 4 community of items
+1. Orange: Dairy products - Yogurt, eggs, butter, whipped/sour cream
+2. Purple : Root vegetable, sausage, beef
+3. Green : citrus fruit, juice,soda, chocolates
+4. Blue: tropical fruit, pip fruits
+
+
