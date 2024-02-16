@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><graph edgedefault="directed"><node id="root vegetables"/>
+<node id="frozenset({'beef'})"/>
+<node id="beef"/>
+<node id="frozenset({'root vegetables'})"/>
+<node id="berries"/>
+<node id="frozenset({'yogurt'})"/>
+<node id="frozenset({'butter'})"/>
+<node id="butter"/>
+<node id="whipped/sour cream"/>
+<node id="frozenset({'whipped/sour cream'})"/>
+<node id="chicken"/>
+<node id="frozenset({'other vegetables'})"/>
+<node id="pip fruit"/>
+<node id="frozenset({'citrus fruit'})"/>
+<node id="citrus fruit"/>
+<node id="frozenset({'pip fruit'})"/>
+<node id="tropical fruit"/>
+<node id="frozenset({'tropical fruit'})"/>
+<node id="cream cheese "/>
+<node id="frozenset({'curd'})"/>
+<node id="curd"/>
+<node id="yogurt"/>
+<node id="frozenset({'domestic eggs'})"/>
+<node id="domestic eggs"/>
+<node id="frozenset({'frozen vegetables'})"/>
+<node id="frozen vegetables"/>
+<node id="hamburger meat"/>
+<node id="onions"/>
+<node id="other vegetables"/>
+<node id="pork"/>
+<node id="frozenset({'pork'})"/>
+<node id="whole milk"/>
+<node id="frozenset({'whole milk'})"/>
+<node id="frozenset({'other vegetables', 'whole milk'})"/>
+<node id="frozenset({'root vegetables', 'other vegetables'})"/>
+<node id="frozenset({'yogurt', 'whole milk'})"/>
+<node id="fruit/vegetable juice"/>
+<node id="rolls/buns"/>
+<node id="frozenset({'other vegetables', 'rolls/buns'})"/>
+<node id="frozenset({'tropical fruit', 'other vegetables'})"/>
+<node id="frozenset({'root vegetables', 'whole milk'})"/>
+<node id="frozenset({'other vegetables', 'yogurt'})"/>
+<node id="frozenset({'rolls/buns', 'whole milk'})"/>
+<node id="frozenset({'tropical fruit', 'whole milk'})"/>
+<edge source="root vegetables" target="frozenset({'beef'})"/>
+<edge source="root vegetables" target="frozenset({'butter'})"/>
+<edge source="root vegetables" target="frozenset({'domestic eggs'})"/>
+<edge source="root vegetables" target="frozenset({'frozen vegetables'})"/>
+<edge source="root vegetables" target="frozenset({'other vegetables'})"/>
+<edge source="root vegetables" target="frozenset({'pork'})"/>
+<edge source="root vegetables" target="frozenset({'whipped/sour cream'})"/>
+<edge source="root vegetables" target="frozenset({'citrus fruit'})"/>
+<edge source="root vegetables" target="frozenset({'other vegetables', 'rolls/buns'})"/>
+<edge source="root vegetables" target="frozenset({'tropical fruit'})"/>
+<edge source="root vegetables" target="frozenset({'tropical fruit', 'other vegetables'})"/>
+<edge source="root vegetables" target="frozenset({'other vegetables', 'whole milk'})"/>
+<edge source="root vegetables" target="frozenset({'other vegetables', 'yogurt'})"/>
+<edge source="root vegetables" target="frozenset({'whole milk'})"/>
+<edge source="root vegetables" target="frozenset({'rolls/buns', 'whole milk'})"/>
+<edge source="root vegetables" target="frozenset({'tropical fruit', 'whole milk'})"/>
+<edge source="root vegetables" target="frozenset({'yogurt'})"/>
+<edge source="root vegetables" target="frozenset({'yogurt', 'whole milk'})"/>
+<edge source="beef" target="frozenset({'root vegetables'})"/>
+<edge source="berries" target="frozenset({'yogurt'})"/>
+<edge source="butter" target="frozenset({'root vegetables'})"/>
+<edge source="butter" target="frozenset({'whipped/sour cream'})"/>
+<edge source="butter" target="frozenset({'whole milk'})"/>
+<edge source="butter" target="frozenset({'other vegetables'})"/>
+<edge source="butter" target="frozenset({'other vegetables', 'whole milk'})"/>
+<edge source="whipped/sour cream" target="frozenset({'butter'})"/>
+<edge source="whipped/sour cream" target="frozenset({'curd'})"/>
+<edge source="whipped/sour cream" target="frozenset({'other vegetables'})"/>
+<edge source="whipped/sour cream" target="frozenset({'root vegetables'})"/>
+<edge source="whipped/sour cream" target="frozenset({'yogurt'})"/>
+<edge source="whipped/sour cream" target="frozenset({'other vegetables', 'whole milk'})"/>
+<edge source="whipped/sour cream" target="frozenset({'other vegetables', 'yogurt'})"/>
+<edge source="whipped/sour cream" target="frozenset({'whole milk'})"/>
+<edge source="whipped/sour cream" target="frozenset({'yogurt', 'whole milk'})"/>
+<edge source="chicken" target="frozenset({'other vegetables'})"/>
+<edge source="chicken" target="frozenset({'root vegetables'})"/>
+<edge source="pip fruit" target="frozenset({'citrus fruit'})"/>
+<edge source="pip fruit" target="frozenset({'tropical fruit'})"/>
+<edge source="pip fruit" target="frozenset({'whole milk'})"/>
+<edge source="pip fruit" target="frozenset({'other vegetables'})"/>
+<edge source="pip fruit" target="frozenset({'other vegetables', 'whole milk'})"/>
+<edge source="citrus fruit" target="frozenset({'pip fruit'})"/>
+<edge source="citrus fruit" target="frozenset({'tropical fruit'})"/>
+<edge source="citrus fruit" target="frozenset({'other vegetables'})"/>
+<edge source="citrus fruit" target="frozenset({'root vegetables'})"/>
+<edge source="citrus fruit" target="frozenset({'root vegetables', 'other vegetables'})"/>
+<edge source="citrus fruit" target="frozenset({'other vegetables', 'whole milk'})"/>
+<edge source="citrus fruit" target="frozenset({'yogurt'})"/>
+<edge source="citrus fruit" target="frozenset({'yogurt', 'whole milk'})"/>
+<edge source="tropical fruit" target="frozenset({'citrus fruit'})"/>
+<edge source="tropical fruit" target="frozenset({'pip fruit'})"/>
+<edge source="tropical fruit" target="frozenset({'yogurt'})"/>
+<edge source="tropical fruit" target="frozenset({'other vegetables'})"/>
+<edge source="tropical fruit" target="frozenset({'root vegetables'})"/>
+<edge source="tropical fruit" target="frozenset({'root vegetables', 'other vegetables'})"/>
+<edge source="tropical fruit" target="frozenset({'other vegetables', 'whole milk'})"/>
+<edge source="tropical fruit" target="frozenset({'other vegetables', 'yogurt'})"/>
+<edge source="tropical fruit" target="frozenset({'whole milk'})"/>
+<edge source="tropical fruit" target="frozenset({'root vegetables', 'whole milk'})"/>
+<edge source="tropical fruit" target="frozenset({'yogurt', 'whole milk'})"/>
+<edge source="cream cheese " target="frozenset({'yogurt'})"/>
+<edge source="curd" target="frozenset({'whipped/sour cream'})"/>
+<edge source="curd" target="frozenset({'yogurt'})"/>
+<edge source="curd" target="frozenset({'whole milk'})"/>
+<edge source="curd" target="frozenset({'yogurt', 'whole milk'})"/>
+<edge source="yogurt" target="frozenset({'curd'})"/>
+<edge source="yogurt" target="frozenset({'tropical fruit'})"/>
+<edge source="yogurt" target="frozenset({'whipped/sour cream'})"/>
+<edge source="yogurt" target="frozenset({'citrus fruit'})"/>
+<edge source="yogurt" target="frozenset({'whole milk'})"/>
+<edge source="yogurt" target="frozenset({'other vegetables'})"/>
+<edge source="yogurt" target="frozenset({'root vegetables'})"/>
+<edge source="yogurt" target="frozenset({'other vegetables', 'whole milk'})"/>
+<edge source="yogurt" target="frozenset({'root vegetables', 'whole milk'})"/>
+<edge source="yogurt" target="frozenset({'tropical fruit', 'whole milk'})"/>
+<edge source="domestic eggs" target="frozenset({'root vegetables'})"/>
+<edge source="domestic eggs" target="frozenset({'whole milk'})"/>
+<edge source="domestic eggs" target="frozenset({'other vegetables'})"/>
+<edge source="domestic eggs" target="frozenset({'other vegetables', 'whole milk'})"/>
+<edge source="frozen vegetables" target="frozenset({'root vegetables'})"/>
+<edge source="hamburger meat" target="frozenset({'other vegetables'})"/>
+<edge source="onions" target="frozenset({'other vegetables'})"/>
+<edge source="other vegetables" target="frozenset({'root vegetables'})"/>
+<edge source="other vegetables" target="frozenset({'whipped/sour cream'})"/>
+<edge source="other vegetables" target="frozenset({'butter'})"/>
+<edge source="other vegetables" target="frozenset({'whole milk'})"/>
+<edge source="other vegetables" target="frozenset({'citrus fruit'})"/>
+<edge source="other vegetables" target="frozenset({'domestic eggs'})"/>
+<edge source="other vegetables" target="frozenset({'pip fruit'})"/>
+<edge source="other vegetables" target="frozenset({'pork'})"/>
+<edge source="other vegetables" target="frozenset({'tropical fruit'})"/>
+<edge source="other vegetables" target="frozenset({'root vegetables', 'whole milk'})"/>
+<edge source="other vegetables" target="frozenset({'yogurt'})"/>
+<edge source="other vegetables" target="frozenset({'yogurt', 'whole milk'})"/>
+<edge source="pork" target="frozenset({'root vegetables'})"/>
+<edge source="pork" target="frozenset({'other vegetables'})"/>
+<edge source="pork" target="frozenset({'other vegetables', 'whole milk'})"/>
+<edge source="whole milk" target="frozenset({'butter'})"/>
+<edge source="whole milk" target="frozenset({'other vegetables'})"/>
+<edge source="whole milk" target="frozenset({'citrus fruit'})"/>
+<edge source="whole milk" target="frozenset({'yogurt'})"/>
+<edge source="whole milk" target="frozenset({'curd'})"/>
+<edge source="whole milk" target="frozenset({'domestic eggs'})"/>
+<edge source="whole milk" target="frozenset({'pip fruit'})"/>
+<edge source="whole milk" target="frozenset({'pork'})"/>
+<edge source="whole milk" target="frozenset({'root vegetables'})"/>
+<edge source="whole milk" target="frozenset({'tropical fruit'})"/>
+<edge source="whole milk" target="frozenset({'whipped/sour cream'})"/>
+<edge source="fruit/vegetable juice" target="frozenset({'other vegetables'})"/>
+<edge source="rolls/buns" target="frozenset({'other vegetables'})"/>
+<edge source="rolls/buns" target="frozenset({'root vegetables'})"/>
+<edge source="rolls/buns" target="frozenset({'whole milk'})"/>
+</graph></graphml>
