@@ -1,0 +1,107 @@
+---
+title: "Text Analysis"
+output: pdf_document
+date: "2023-11-26"
+---
+
+Note: Instead of doing text anlaysis on ReuterCops data, as I don;t have the domain knowledge to draw interesting insights, I am using text data from our ML discussion post by MABA-WP students from module 12 on PCA vs clustering distinction. 
+
+
+#Question: What question(s) are you trying to answer?
+- Is there a smilarity in the text documents/ disucssion that MSBA-WP students posted for PCA vs clustering discussion post? Do we have very similar posts taken from chatGPT or diverse posts.
+
+#Approach: What approach/statistical tool did you use to answer the questions?
+
+- I have taken the first 5 posts from the discussion in canvas and created 5 txt files. Using Text modeling & PCA analysis, I will be analysing the direction of the vectors to see if the posts are very similar or different. I have also created an identical post 6 which is replica of post 1 to see if PCA is able to identify the dulpicate post
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tm) 
+library(tidyverse)
+library(slam)
+library(proxy)
+readerPlain = function(fname){
+				readPlain(elem=list(content=readLines(fname)), 
+							id=fname, language='en') }
+```
+
+```{r}
+set.seed(42)
+
+## Extracting the txt files from local file
+file_list = Sys.glob('C:/Users/I068117/UT_Machine Learning/ML_discussion/*.txt')
+MSBA_discussion = lapply(file_list, readerPlain) 
+
+#The files are....
+file_list
+
+# Clean up the file names
+mynames = file_list %>%
+	{ strsplit(., '/', fixed=TRUE) } %>%
+	{ lapply(., tail, n=2) } %>%
+	{ lapply(., paste0, collapse = '') } %>%
+	unlist
+	
+# Rename the txt files
+names(MSBA_discussion) = mynames
+
+documents_raw = Corpus(VectorSource(MSBA_discussion))
+
+my_documents = documents_raw
+my_documents = tm_map(my_documents, content_transformer(tolower)) # make everything lowercase
+my_documents = tm_map(my_documents, content_transformer(removeNumbers)) # remove numbers
+my_documents = tm_map(my_documents, content_transformer(removePunctuation)) # remove punctuation
+my_documents = tm_map(my_documents, content_transformer(stripWhitespace)) ## remove excess white-space
+
+my_documents = tm_map(my_documents, content_transformer(removeWords), stopwords("en"))
+
+## create a doc-term-matrix
+DTM_MSBA_discussion= DocumentTermMatrix(my_documents)
+DTM_MSBA_discussion # some basic summary statistics
+
+class(DTM_MSBA_discussion)
+
+# List terms with frequency of 10
+findFreqTerms(DTM_MSBA_discussion, 10)
+
+#List words that are associated with custering with correlation of .7
+findAssocs(DTM_MSBA_discussion, "clustering", .7) 
+
+#Removing sparse words in 95% of the document
+DTM_MSBA_discussion = removeSparseTerms(DTM_MSBA_discussion, 0.95)
+
+# construct TF IDF weights
+tfidf_MSBA = weightTfIdf(DTM_MSBA_discussion)
+
+
+# Now PCA on term frequencies
+X = as.matrix(tfidf_MSBA)
+summary(colSums(X))
+scrub_cols = which(colSums(X) == 0)
+X = X[,-scrub_cols]
+
+pca_MSBA = prcomp(X, rank=2, scale=TRUE)
+plot(pca_MSBA) 
+
+pca_MSBA$rotation[order(abs(pca_MSBA$rotation[,1]),decreasing=TRUE),1][1:25]
+pca_MSBA$rotation[order(abs(pca_MSBA$rotation[,2]),decreasing=TRUE),2][1:25]
+
+## Look at the first two PCs..
+# We've now turned each document into a single pair of numbers -- massive dimensionality reduction
+
+plot(pca_MSBA$x[,1:2], xlab="PCA 1 direction", ylab="PCA 2 direction", bty="n",
+     type='n')
+text(pca_MSBA$x[,1:2], labels = 1:length(MSBA_discussion), cex=0.7)
+
+
+```
+
+#Results: What evidence/results did your approach provide to answer the questions (e.g., any numbers, tables, or figures as appropriate)?
+
+-PCA vectors highlight that posts 1 & 6 are identical and is rightly able to identify duplicate posts. It also highlights that posts 3,5,2 are also similar since they are mapping in the same direction. Post 4 is diverse. 
+
+#Conclusion: What are your conclusions about your questions? Provide a written interpretation of your results, understandable to stakeholders who might plausibly take an interest in this data set
+
+- Using text analysi & PCA, professors are able to identify which posts are similar and how much diversity of thoughts we have in our discussion post.
+
